@@ -1,17 +1,7 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-// import {  } from "react-router-dom";
+import React from 'react';
+import requireAuth from './require.auth';
 
-export default function CommentBox(props) {
-  const { auth } = useSelector((state) => state);
-
-  function shouldNavigateAway() {
-    if (!auth) props.history.push('/');
-  }
-
-  useEffect(() => {
-    shouldNavigateAway();
-  }, [auth, shouldNavigateAway]);
+function CommentBox() {
   return (
     <>
       <h4>Add a comment</h4>
@@ -23,3 +13,5 @@ export default function CommentBox(props) {
     </>
   );
 }
+
+export default requireAuth(CommentBox);
